@@ -8,9 +8,7 @@
 
 ## Intro
 
-<p align="center">
-  <img width="600" src="https://cdn.jsdelivr.net/gh/antoniojps/react-simple-minimap@gh-pages/react-simple-minimap.gif">
-</p>
+![](https://cdn.jsdelivr.net/gh/antoniojps/react-simple-minimap@gh-pages/react-simple-minimap.gif)
 
 ## Install
 
