@@ -6,6 +6,12 @@
 
 [![NPM](https://img.shields.io/npm/v/react-simple-minimap.svg)](https://www.npmjs.com/package/react-simple-minimap) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Intro
+
+<p align="center">
+  <img width="600" src="https://cdn.jsdelivr.net/gh/antoniojps/react-simple-minimap@gh-pages/react-simple-minimap.gif">
+</p>
+
 ## Install
 
 ```bash
