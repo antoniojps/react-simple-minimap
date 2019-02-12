@@ -9,39 +9,61 @@ class Minimap extends Component {
     this.refMinimap = React.createRef()
     this.state = {
       scrollPercent: 0,
+      scrollPercentTop: 0,
+      scrollPercentBottom: 0,
       windowScroll: 0,
-      windowWidth: document.documentElement.clientWidth
+      windowWidth: document.documentElement.clientWidth,
+      windowHeight: document.documentElement.clientHeight
     }
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.updateScrollPercent)
-    window.addEventListener('resize', this.updateWidth)
+    window.addEventListener('resize', this.updateDimensions)
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.updateScrollPercent)
-    window.removeEventListener('resize', this.updateWidth)
+    window.removeEventListener('resize', this.updateDimensions)
   }
 
-  updateWidth = () => {
+  updateDimensions = () => {
     this.setState(() => ({
-      windowWidth: document.documentElement.clientWidth
+      windowWidth: document.documentElement.clientWidth,
+      windowHeight: document.documentElement.clientHeight
     }))
   }
 
   updateScrollPercent = () => {
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop
+    const { windowHeight } = this.state
 
+    const winScrollTop =
+      document.body.scrollTop || document.documentElement.scrollTop
+    const winScrollBottom = winScrollTop + windowHeight
+
+    // full document height regardless of scroll
     const height =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight
 
-    const scrolled = winScroll / height
+    const scrolled = winScrollTop / height
+
+    const maxScrollTop = height - document.documentElement.clientHeight
+    const maxScrollTopPercent = maxScrollTop / height
+    let scrolledTop = winScrollTop / height
+    scrolledTop =
+      scrolledTop >= maxScrollTopPercent ? maxScrollTopPercent : scrolledTop
+
+    const maxScrollBottom = 1
+    let scrolledBottom = winScrollBottom / height
+    scrolledBottom =
+      scrolledBottom >= maxScrollBottom ? maxScrollBottom : scrolledBottom
+
     this.scrollToPercent()
     this.setState(() => ({
-      scrollPercent: scrolled
+      scrollPercent: scrolled,
+      scrollPercentTop: scrolledTop,
+      scrollPercentBottom: scrolledBottom
     }))
   }
 
@@ -53,8 +75,9 @@ class Minimap extends Component {
     const scrollHeight = minimap.scrollHeight
 
     const height = scrollHeight - minimapHeight
+    const windowTop = height * scrollPercent
 
-    minimap.scrollTo(0, height * scrollPercent)
+    minimap.scrollTo(0, windowTop)
   }
 
   computePreviewStyle = () => {
@@ -69,10 +92,25 @@ class Minimap extends Component {
     return { width, height }
   }
 
+  computeCurrentPreviewStyle = () => {
+    const { scrollPercentTop, scrollPercentBottom } = this.state
+    console.log(scrollPercentBottom, 'scrollPercentBottom')
+    console.log(scrollPercentTop, 'scrollPercentTop')
+
+    // I have the percentage that was scrolled
+    // Now I need to calculate based of them the
+    // height and top of currentPreview
+
+    return {
+      top: 0
+    }
+  }
+
   render() {
     const { of } = this.props
     const previewStyle = this.computePreviewStyle()
     const minimapStyle = this.computeMinimapStyle()
+    const currentPreviewStyle = this.computeCurrentPreviewStyle()
 
     return (
       <div
@@ -80,6 +118,10 @@ class Minimap extends Component {
         style={minimapStyle}
         ref={this.refMinimap}
       >
+        <div
+          className={styles.minimapWindow__currentPreview}
+          style={currentPreviewStyle}
+        />
         <div className={styles.minimapWindow__preview} style={previewStyle}>
           {of}
         </div>

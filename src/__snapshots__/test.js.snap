@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Minimap> 1`] = `
+<div
+  style="width: 114px; height: 300px;"
+>
+  <div>
+    <div
+      styles="[object Object]"
+    />
+  </div>
+</div>
+`;
