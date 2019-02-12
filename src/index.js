@@ -57,19 +57,30 @@ class Minimap extends Component {
     minimap.scrollTo(0, height * scrollPercent)
   }
 
-  computeScale = () => {
+  computePreviewStyle = () => {
     const { windowWidth } = this.state
-    const minimapWidth = 114
-    const scale = minimapWidth / windowWidth
+    const { width } = this.props
+    const scale = width / windowWidth
     return { transform: `scale(${scale || 1})` }
+  }
+
+  computeMinimapStyle = () => {
+    const { width, height } = this.props
+    return { width, height }
   }
 
   render() {
     const { of } = this.props
-    const scale = this.computeScale()
+    const previewStyle = this.computePreviewStyle()
+    const minimapStyle = this.computeMinimapStyle()
+
     return (
-      <div className={styles.minimapWindow} ref={this.refMinimap}>
-        <div className={styles.minimapWindow__preview} style={scale}>
+      <div
+        className={styles.minimapWindow}
+        style={minimapStyle}
+        ref={this.refMinimap}
+      >
+        <div className={styles.minimapWindow__preview} style={previewStyle}>
           {of}
         </div>
       </div>
@@ -78,7 +89,14 @@ class Minimap extends Component {
 }
 
 Minimap.propTypes = {
-  of: PropTypes.node.isRequired
+  of: PropTypes.node.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+}
+
+Minimap.defaultProps = {
+  width: 114,
+  height: 300
 }
 
 export default Minimap

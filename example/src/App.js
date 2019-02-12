@@ -296,7 +296,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Minimap of={this.renderPage()} />
+        <Minimap of={this.renderPage()} width={200} height={300} />
         {this.renderPage()}
       </Fragment>
     )

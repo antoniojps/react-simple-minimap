@@ -1,13 +1,15 @@
 # react-simple-minimap
 
-> A Minimap gives you a high level overview of your page or component which is very useful for quick navigation or page preview
+> A React Minimap component based of [visual studio's preview minimap](https://code.visualstudio.com/updates/v1_10#_preview-minimap)
+
+> 🗾 Gives you a high level overview of your page or component which is very useful for quick navigation or page preview
 
 [![NPM](https://img.shields.io/npm/v/react-simple-minimap.svg)](https://www.npmjs.com/package/react-simple-minimap) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save react-simple-minimap
+yarn add react-simple-minimap
 ```
 
 ## Usage
@@ -15,16 +17,35 @@ npm install --save react-simple-minimap
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-simple-minimap'
+import Minimap from 'react-simple-minimap'
 
-class Example extends Component {
-  render () {
+class Page extends Component {
+  renderPage = () => (
+    <>
+      <Header>...</Header>
+      <Main>...</Main>
+      <Footer>...</Footer>
+    </>
+  )
+
+  render() {
     return (
-      <MyComponent />
+      <>
+        <Minimap of={this.renderPage()} />
+        {this.renderPage()}
+      </>
     )
   }
 }
 ```
+
+## Props
+
+| Property | Type                 | Default | Required? | Description                                    |
+| :------- | :------------------- | :------ | :-------- | :--------------------------------------------- |
+| `of`     | `Node`               | `null`  | ✓         | The component to be previewed, normally a page |
+| `width`  | `number`             | `114`   |           | Minimap width in pixels                        |
+| `height` | `number` or `string` | `300`   |           | Minimap height can be any unit                 |
 
 ## License
 
