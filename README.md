@@ -9,6 +9,7 @@
 ## Preview
 
 ![react-simple-animated](https://github.com/antoniojps/react-simple-minimap/blob/master/example/public/react-simple-minimap.gif)
+[CodeSandBox Example](https://codesandbox.io/s/p90nzpzj9j?view=editor)
 
 ## Install
 
