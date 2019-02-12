@@ -1,8 +1,18 @@
-/* add css styles here (optional) */
+.minimapWindow {
+  width: 114px;
+  height: 300px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: scroll;
+  overflow: hidden;
+}
 
-.test {
-  display: inline-block;
-  margin: 2em auto;
-  border: 2px solid #000;
-  font-size: 2em;
+.minimapWindow__preview {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  transform-origin: left top;
 }

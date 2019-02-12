@@ -9,7 +9,9 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "react-simple-minimap": "link:.."
+    "react-simple-minimap": "link:..",
+    "react-syntax-highlighter": "^10.1.2",
+    "styled": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
