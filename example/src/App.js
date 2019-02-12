@@ -168,106 +168,6 @@ class App extends Component {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // damn, you're actually reading this?
   // so what are you waiting for?
   // yarn add react-simple-minimap
@@ -296,7 +196,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Minimap of={this.renderPage()} width={200} height={300} />
+        <Minimap of={this.renderPage()} width={200} height="300px" />
         {this.renderPage()}
       </Fragment>
     )
