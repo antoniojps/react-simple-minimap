@@ -6,9 +6,9 @@
 
 [![NPM](https://img.shields.io/npm/v/react-simple-minimap.svg)](https://www.npmjs.com/package/react-simple-minimap) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Intro
+## Preview
 
-![](https://cdn.jsdelivr.net/gh/antoniojps/react-simple-minimap@gh-pages/react-simple-minimap.gif)
+![react-simple-animated](https://github.com/antoniojps/react-simple-minimap/blob/master/example/public/react-simple-minimap.gif)
 
 ## Install
 
